@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neuorion.com/sitemap.xml
+Sitemap: https://www.neuorion.com/sitemap.xml
