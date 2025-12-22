@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+content="
+default-src 'none';
+script-src 'self' 'unsafe-inline';
+style-src 'self'
+          https://fonts.googleapis.com
+          https://cdnjs.cloudflare.com
+          'unsafe-inline';
+font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+img-src 'self' data: https:;
+connect-src 'self';
+base-uri 'self';
+form-action 'self';
+object-src 'none';
+upgrade-insecure-requests;
+">
+
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Neuorion Technologies | Build. Scale. Secure.</title>
+    <!-- Primary SEO -->
+    <title>NeuOrion Technologies | Secure AI-Ready Cloud Infrastructure</title>
+    <meta name="description" content="Neuorion Technologies designs secure, scalable, and AI-ready cloud infrastructure. Experts in cloud architecture, MLOps, and AI security." />
+    <meta name="keywords" content="AI cloud security, cloud architecture, MLOps, AI infrastructure, cloud security, AI security" />
+    <meta name="author" content="Neuorion Technologies" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://neuorion.com" />
+
+    <link href="./dist/output.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+
+    <style>
+        :root {
+            --brand-orange: #FF6B00;
+            --brand-gray: #64748B;
+            --bg-light: #FFFFFF;
+            --text-dark: #0F172A;
+        }
+        body { background-color: var(--bg-light); color: var(--text-dark); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .logo-text-orange { color: var(--brand-orange); }
+        .text-slate { color: var(--brand-gray); }
+        .bg-orange { background-color: var(--brand-orange); }
+        .feature-card { transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .animate-scale-in { animation: scaleIn 0.8s ease-out forwards; opacity: 0; transform: scale(0.9); }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
+    </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Neuorion Technologies",
+  "url": "https://neuorion.com",
+  "logo": "https://neuorion.com/assets/images/logo.png",
+  "description": "Neuorion Technologies designs secure, scalable, and AI-ready cloud infrastructure. Experts in cloud architecture, MLOps, and AI security.",
+  "sameAs": [
+    "https://www.linkedin.com/company/neuorion"
+  ]
+}
+</script>
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMP57R493D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TMP57R493D');
+</script>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="./assets/images/logo.png" alt="Neuorion Logo" class="h-16">
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <!-- Explicit Home Link Added -->
+            <a href="#home" class="hover:text-orange-500 transition">Home</a>
+            <a href="#mission" class="hover:text-orange-500 transition">Mission</a>
+            <a href="#story" class="hover:text-orange-500 transition">Story</a>
+            <a href="#competencies" class="hover:text-orange-500 transition">Competencies</a>
+            <a href="#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (id="home" added here) -->
+    <header id="home" class="relative min-h-screen flex items-center justify-center pt-20 bg-gray-50 overflow-hidden">
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none animate-fade-in" style="animation-delay: 0.1s;">
+                BUILD. SCALE.<br><span class="logo-text-orange">SECURE.</span>
+            </h1>
+            <p class="text-slate text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light animate-fade-in" style="animation-delay: 0.3s;">
+                Your Trusted Partner for Secure, Scalable, Highly Available Cloud and AI Infrastructure.
+            </p>
+            <div class="mt-12 animate-slide-up" style="animation-delay: 0.5s;">
+                <a href="#mission" class="bg-orange text-white px-10 py-4 rounded-lg font-bold hover:bg-orange-600 transition shadow-lg transform hover:scale-105">Discover Our Mission</a>
+            </div>
+        </div>
+    </header>
+
+	<!-- Mission Section -->
+	<section id="mission" class="py-32 px-6 bg-white">
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <!-- Mission Image -->
+        <div class="animate-slide-up">
+            <img
+                src="./assets/images/mission.png"
+                alt="Neuorion Mission – Secure and Scalable AI Cloud Infrastructure"
+                class="w-full max-w-lg mx-auto"
+                loading="lazy"
+            >
+        </div>
+
+        <!-- Mission -->
+        <div class="animate-fade-in">
+			<div class="text-center mb-16 animate-slide-up">
+				<h2 class="text-4xl font-black text-gray-800 mb-4">Our Mission</h2>
+				<div class="h-1 w-20 bg-orange mx-auto"></div>
+			</div>
+			<p class="text-slate text-lg leading-relaxed">
+				Our mission is to empower organizations to build, scale, and secure intelligent cloud
+				infrastructures that accelerate innovation while maintaining trust, resilience,
+				and operational excellence in the AI era.
+			</p>
+		</div>
+	</section>
+
+    <!-- The Story Section -->
+    <section id="story" class="py-32 px-6">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-black text-gray-800 mb-4">Our Story</h2>
+                <div class="h-1 w-20 bg-orange mx-auto"></div>
+            </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="animate-slide-up">
+                <p class="text-slate text-lg leading-relaxed mb-6">
+                    Neuorion Technologies was founded to help organizations build and scale systems without compromising security, reliability, or governance. As workloads grew more complex, many enterprises were constrained by fragmented architectures and legacy security models - The Neuorion Technologies emerged to close that gap.
+                </p>
+           </div>
+            <div class="p-8 border-l-4 border-l-orange bg-gray-50 rounded-lg shadow-sm animate-fade-in">
+                    "Our team brings together deep expertise in cloud architecture, AI/ML, infrastructure, and cybersecurity, helping businesses accelerate digital transformation with confidence and agility."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competencies Section -->
+    <p class="text-gray-600 italic text-xl font-light leading-relaxed">
+    <section id="competencies" class="py-32 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-black text-gray-800 mb-4">Core Competencies</h2>
+                <div class="h-1 w-20 bg-orange mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Cloud Arch-->
+                <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.1s;">
+                    <div class="mb-4 text-3xl logo-text-orange group-hover:scale-110 transition-transform">
+                        <svg xmlns="www.w3.org" class="h-8 w-8 text-[#FF6B00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M12 4.354a4 4 0 000 5.292M12 4.354a4 4 0 010 5.292M12 10a4 4 0 110 5.292M12 10a4 4 0 100 5.292M12 10a4 4 0 110 5.292m0-5.292a4 4 0 100 5.292M12 15a4 4 0 110 5.292M12 15a4 4 0 100 5.292M12 15a4 4 0 110 5.292m0-5.292a4 4 0 100 5.292" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Cloud Architecture</h3>
+                    <p class="text-slate text-sm">We design and modernize cloud architectures purpose-built for AI and data-intensive systems. Our approach emphasizes scalability, high availability, and cost efficiency across AWS, Azure, and hybrid environments—ensuring your AI platforms are production-ready from day one.</p>
+                </div>
+
+                <!-- Card 2: Cybersecurity -->
+                <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.4s;">
+                    <div class="mb-4 text-3xl logo-text-orange group-hover:scale-110 transition-transform">
+                        <svg xmlns="www.w3.org" class="h-8 w-8 text-[#FF6B00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Cloud and AI Security</h3>
+                    <p class="text-slate text-sm">We delivers security architectures purpose-built for cloud-native and AI-driven environments. We help organizations protect data, models, and workloads across their entire AI lifecycle—without slowing innovation.</p>
+                </div>
+
+                <!-- Card 3: Cloud AI/ML Ops-->
+                <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="mb-4 text-3xl logo-text-orange group-hover:scale-110 transition-transform">
+                        <svg xmlns="www.w3.org" class="h-8 w-8 text-[#FF6B00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">AI/MLOps</h3>
+                    <p class="text-slate text-sm">We implement end-to-end pipelines that enable repeatable, governed, and observable AI deployments. From model training and versioning to CI/CD, monitoring, and lifecycle management, we help teams move AI from prototype to production at scale.</p>
+                </div>
+
+                <!-- Card 4: Infrastructure -->
+                <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.3s;">
+                    <div class="mb-4 text-3xl logo-text-orange group-hover:scale-110 transition-transform">
+                        <svg xmlns="www.w3.org" class="h-8 w-8 text-[#FF6B00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h-4m-2 0h-2m2 8h-4m-2 0h-2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Code-Driven Infra</h3>
+                    <p class="text-slate text-sm">We build automated, self-service platforms using infrastructure as code, policy-as-code, and modern DevOps practices. This reduces operational overhead, improves reliability, and enables teams to scale AI systems without manual complexity.</p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-white">
+        <div class="max-w-3xl mx-auto text-center animate-slide-up">
+            <h2 class="text-3xl font-black text-gray-800 mb-6">Let's Connect and Innovate.</h2>
+            <p class="text-slate mb-10 text-lg">For inquiries, partnerships, and strategic consulting, connect with our professional team directly on LinkedIn.</p>
+            
+        <a href="https://www.linkedin.com/company/neuorion"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 bg-[#0077b5] text-white px-10 py-4 rounded-lg font-bold text-lg transition-all">
+            <i class="fab fa-linkedin text-2xl"></i>
+            Message Neuorion on LinkedIn
+        </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-sm border-t border-gray-100">
+        <div class="text-slate">
+            &copy; 2025 Neuorion Technologies
+        </div>
+    </footer>
+
+    <!-- JavaScript for Scroll-Triggered Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-slide-up, .animate-fade-in, .animate-scale-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
