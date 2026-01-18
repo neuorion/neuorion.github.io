@@ -1,0 +1,33 @@
+title: Neurion Technologies
+description: Your Trusted Partner for Secure, Scalable Cloud and AI Infrastructure.
+url: "https://www.neuorion.com"
+baseurl: ""  # Empty for GitHub Pages - site served from root
+
+# Theme (optional - we use custom layouts)
+# theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Default permalink for posts - blog posts will be at /blog/:title.html
+permalink: /blog/:title.html
+
+# Jekyll will automatically find _posts in blog/_posts directory
+# Posts will be accessible at /blog/:title.html
+
+# Exclude root HTML files and build artifacts from Jekyll processing
+# This ensures index.html at root stays as static HTML
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - src/
+  - index.html  # Root site HTML - don't process with Jekyll
+  - robots.txt
+  - sitemap.xml
+  - CNAME
+  - README.md
+  - .git
+  - .gitignore
