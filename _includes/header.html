@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+content="
+default-src 'none';
+script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
+style-src 'self'
+          https://fonts.googleapis.com
+          https://cdnjs.cloudflare.com
+          'unsafe-inline';
+font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+img-src 'self' https://www.google-analytics.com data: https:;
+connect-src 'self' https://www.google-analytics.com;
+base-uri 'self';
+form-action 'self';
+object-src 'none';
+upgrade-insecure-requests;
+">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <title>{% if page.title %}{{ page.title }} | {% endif %}Neuorion Technologies Blog</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    
+    <style>
+        :root {
+            --brand-orange: #FF6B00;
+            --brand-gray: #64748B;
+            --bg-light: #FFFFFF;
+            --text-dark: #0F172A;
+        }
+        body { 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            line-height: 1.6;
+        }
+        .logo-text-orange { color: var(--brand-orange); }
+        .text-slate { color: var(--brand-gray); }
+        .bg-orange { background-color: var(--brand-orange); }
+        a { transition: color 0.2s ease; text-decoration: none; }
+        a:hover { color: var(--brand-orange); }
+        
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 50;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: #f97316;
+        }
+        
+        nav a[href="/blog/"] {
+            color: var(--brand-orange);
+            font-weight: 700;
+        }
+        
+        nav a[href="/#contact"] {
+            background: var(--brand-orange);
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a[href="/#contact"]:hover {
+            background: #ea580c;
+            color: white !important;
+        }
+        
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 0.875rem;
+            border-top: 1px solid #f3f4f6;
+            background: white;
+        }
+        
+        footer .max-w-6xl {
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+        
+        footer .flex {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer a {
+            color: var(--brand-gray);
+            transition: color 0.2s;
+        }
+        
+        footer a:hover {
+            color: var(--brand-orange);
+        }
+        
+        .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .text-xl {
+            font-size: 1.25rem;
+        }
+        
+        img.h-16 {
+            height: 4rem;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .w-full {
+            width: 100%;
+        }
+        
+        .z-50 {
+            z-index: 50;
+        }
+        
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .space-x-3 > * + * {
+            margin-left: 0.75rem;
+        }
+        
+        .space-x-8 > * + * {
+            margin-left: 2rem;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        
+        .font-medium {
+            font-weight: 500;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .max-w-6xl {
+            max-width: 72rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .border-t {
+            border-top-width: 1px;
+        }
+        
+        .border-gray-100 {
+            border-color: #f3f4f6;
+        }
+        
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        
+        .hover\:text-orange-500:hover {
+            color: #f97316;
+        }
+        
+        .transition {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .md\:flex {
+                display: flex !important;
+            }
+            .md\:px-12 {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+        
+        .antialiased {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    
+    {% seo %}
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <a href="/">
+                <img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16">
+            </a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+            <a href="/#home" class="hover:text-orange-500 transition">Home</a>
+            <a href="/#mission" class="hover:text-orange-500 transition">Mission</a>
+            <a href="/#story" class="hover:text-orange-500 transition">Story</a>
+            <a href="/#competencies" class="hover:text-orange-500 transition">Competencies</a>
+            <a href="/blog/" class="text-orange-600 font-bold">Blog</a>
+            <a href="/#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
+        </div>
+    </nav>

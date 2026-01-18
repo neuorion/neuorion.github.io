@@ -17,8 +17,14 @@ permalink: /blog/:title.html
 # Posts will be accessible at /blog/:title.html
 
 # Exclude build artifacts from Jekyll processing
-# Note: index.html is NOT excluded so it's copied to output
-# Since it has no front matter, Jekyll will copy it as-is without processing
+# 
+# IMPORTANT: index.html is intentionally NOT excluded because:
+# 1. It has NO front matter (no YAML --- blocks)
+# 2. Jekyll copies files without front matter AS-IS to _site/
+# 3. This preserves the static company website at root
+#
+# Blog files (blog/index.md, blog/_posts/*.md) HAVE front matter
+# and will be processed by Jekyll using root _layouts/ and _includes/
 exclude:
   - node_modules
   - package.json
@@ -37,3 +43,4 @@ exclude:
   - .git
   - .gitignore
   - _site/
+  # Note: blog/_layouts/ and blog/_includes/ are ignored (Jekyll uses root)

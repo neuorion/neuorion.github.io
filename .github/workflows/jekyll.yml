@@ -1,0 +1,23 @@
+# GitHub Actions workflow for Jekyll (optional - GitHub Pages auto-builds)
+# This file is optional since GitHub Pages builds Jekyll automatically
+# But you can use it for custom build processes if needed
+
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - run: bundle install
+    - run: bundle exec jekyll build
