@@ -84,6 +84,11 @@ body {
     text-decoration: none;
 }
 
+.category-tag.bg-orange {
+    background-color: #FF6B00;
+    color: white;
+}
+
 .featured-post {
     background: linear-gradient(135deg, #FF6B00 0%, #ff8c42 100%);
     color: white;
@@ -359,7 +364,7 @@ footer .inline-flex {
 <section class="py-8 px-6 bg-white border-b border-gray-200">
     <div class="max-w-6xl mx-auto">
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="/blog/" class="category-tag {% unless page.category %}bg-orange text-white{% endunless %}">All Articles</a>
+            <a href="/blog/" class="category-tag bg-orange text-white">All Articles</a>
             <a href="/blog/#automation" class="category-tag">Automation</a>
             <a href="/blog/#productivity" class="category-tag">Productivity</a>
             <a href="/blog/#business" class="category-tag">Business Growth</a>
