@@ -349,7 +349,7 @@ footer .inline-flex {
 </style>
 
 <!-- Blog Hero Section -->
-<section class="blog-hero py-20 px-6">
+<section class="blog-hero pt-0 pb-20 px-6">
     <div class="max-w-6xl mx-auto text-center">
         <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tighter leading-none">
             <span class="logo-text-orange">Blog</span>
