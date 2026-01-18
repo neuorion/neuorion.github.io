@@ -16,18 +16,24 @@ permalink: /blog/:title.html
 # Jekyll will automatically find _posts in blog/_posts directory
 # Posts will be accessible at /blog/:title.html
 
-# Exclude root HTML files and build artifacts from Jekyll processing
-# This ensures index.html at root stays as static HTML
+# Exclude build artifacts from Jekyll processing
+# Note: index.html is NOT excluded so it's copied to output
+# Since it has no front matter, Jekyll will copy it as-is without processing
 exclude:
   - node_modules
   - package.json
   - package-lock.json
   - tailwind.config.js
   - src/
-  - index.html  # Root site HTML - don't process with Jekyll
+  - blog-preview.html  # Local preview file - don't process
   - robots.txt
   - sitemap.xml
   - CNAME
   - README.md
+  - README-BLOG.md
+  - Gemfile
+  - Gemfile.lock
+  - .github/
   - .git
   - .gitignore
+  - _site/
