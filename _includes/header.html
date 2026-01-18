@@ -124,6 +124,14 @@ upgrade-insecure-requests;
             margin-bottom: 1.5rem;
         }
         
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        
         footer a {
             color: var(--brand-gray);
             transition: color 0.2s;
@@ -388,6 +396,11 @@ upgrade-insecure-requests;
                 display: none;
             }
         }
+        
+        /* Body scroll lock when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
     </style>
     
     {% seo %}
@@ -397,7 +410,7 @@ upgrade-insecure-requests;
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center">
+    <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
         <div class="flex items-center space-x-3">
             <a href="/">
                 <img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16">
@@ -411,7 +424,12 @@ upgrade-insecure-requests;
             <a href="/blog/" class="text-orange-600 font-bold">Blog</a>
             <a href="/#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
         </div>
-        <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle mobile menu">
+        <button 
+            class="mobile-menu-button" 
+            id="mobileMenuButton" 
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
             <span></span>
             <span></span>
             <span></span>
@@ -419,35 +437,66 @@ upgrade-insecure-requests;
     </nav>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
         <a href="/#home">Home</a>
         <a href="/#mission">Mission</a>
         <a href="/#story">Story</a>
         <a href="/#competencies">Competencies</a>
         <a href="/blog/">Blog</a>
         <a href="/#contact">Contact</a>
-    </div>
+    </nav>
     
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle - with null checks
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         
-        function toggleMobileMenu() {
-            mobileMenuButton.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            mobileMenuOverlay.classList.toggle('active');
-        }
-        
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(toggleMobileMenu, 100);
+        if (mobileMenuButton && mobileMenu && mobileMenuOverlay) {
+            function toggleMobileMenu() {
+                const isActive = mobileMenu.classList.contains('active');
+                
+                // Toggle classes
+                mobileMenuButton.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+                
+                // Update ARIA expanded state
+                mobileMenuButton.setAttribute('aria-expanded', !isActive);
+                
+                // Focus management
+                if (!isActive) {
+                    // Menu opening - focus first link
+                    const firstLink = mobileMenu.querySelector('a');
+                    if (firstLink) {
+                        setTimeout(() => firstLink.focus(), 100);
+                    }
+                } else {
+                    // Menu closing - return focus to button
+                    mobileMenuButton.focus();
+                }
+            }
+            
+            // Button click handler
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            
+            // Overlay click handler
+            mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+            
+            // ESC key handler
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
             });
-        });
+            
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    setTimeout(toggleMobileMenu, 100);
+                });
+            });
+        }
     </script>
