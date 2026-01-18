@@ -346,15 +346,27 @@ footer .inline-flex {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* Ensure mobile menu links display vertically (override any conflicts) */
+.mobile-menu {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.mobile-menu a {
+    display: block !important;
+    width: 100% !important;
+    flex: none !important;
+}
 </style>
 
 <!-- Blog Hero Section -->
-<section class="blog-hero pt-0 pb-20 px-6">
-    <div class="max-w-6xl mx-auto text-center">
+<section class="blog-hero py-20 px-6">
+    <div class="max-w-6xl text-center" style="margin-left: auto; margin-right: auto;">
         <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tighter leading-none">
             <span class="logo-text-orange">Blog</span>
         </h1>
-        <p class="text-slate text-xl max-w-2xl mx-auto leading-relaxed font-light">
+        <p class="text-slate text-xl max-w-3xl leading-relaxed font-light" style="margin: 0 auto; max-width: 42rem;">
             Insights on cloud architecture, AI security, MLOps, and infrastructure automation.
         </p>
     </div>
