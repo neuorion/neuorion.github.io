@@ -10,6 +10,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+# Copy _headers to _site for Netlify/Cloudflare Pages (security headers for / and /blog/)
+include:
+  - _headers
+
 # Default permalink for posts - blog posts will be at /blog/:title.html
 permalink: /blog/:title.html
 
@@ -47,3 +51,4 @@ exclude:
   - script/           # Local dev scripts (serve.ps1, serve.bat)
   - LOCAL_DEVELOPMENT.md
   # Note: blog/_layouts/ and blog/_includes/ are ignored (Jekyll uses root)
+  - blog/_archive   # Archived posts (revisit later), not published
