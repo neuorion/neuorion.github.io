@@ -43,4 +43,6 @@ exclude:
   - .git
   - .gitignore
   - _site/
+  - script/           # Local dev scripts (serve.ps1, serve.bat)
+  - LOCAL_DEVELOPMENT.md
   # Note: blog/_layouts/ and blog/_includes/ are ignored (Jekyll uses root)

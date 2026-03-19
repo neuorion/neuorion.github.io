@@ -364,10 +364,10 @@ footer .inline-flex {
 <section class="blog-hero py-20 px-6">
     <div class="max-w-6xl text-center" style="margin-left: auto; margin-right: auto;">
         <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tighter leading-none">
-            <span class="logo-text-orange">Blog</span>
+            <span class="logo-text-orange">Learnings.</span> Use Cases. Ideas.
         </h1>
         <p class="text-slate text-xl max-w-3xl leading-relaxed font-light" style="margin: 0 auto; max-width: 42rem;">
-            Insights on cloud architecture, AI security, MLOps, and infrastructure automation.
+            Real-world lessons, customer stories, and thoughts on cloud, AI security, and infrastructure.
         </p>
     </div>
 </section>

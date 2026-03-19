@@ -211,6 +211,69 @@ upgrade-insecure-requests;
             overflow: hidden;
         }
         
+        /* Site header nav – same on main and blog, fixed height so it doesn’t change by page */
+        nav.fixed:not(.mobile-menu) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: #fff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            padding: 1.25rem 1.5rem;
+            min-height: 4.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 1.25;
+        }
+        @media (min-width: 768px) {
+            nav.fixed:not(.mobile-menu) {
+                padding: 1.25rem 3rem;
+            }
+        }
+        nav.fixed:not(.mobile-menu) .hidden {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            nav.fixed:not(.mobile-menu) .hidden.md\:flex {
+                display: flex;
+                gap: 2rem; /* same as live neuorion.com (Tailwind space-x-8) */
+                font-size: 0.875rem;
+                font-weight: 500;
+                align-items: center;
+            }
+            /* Prevent Tailwind space-x-8 from doubling spacing – only gap applies */
+            nav.fixed:not(.mobile-menu) .hidden.md\:flex > * {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+        nav.fixed:not(.mobile-menu) a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        nav.fixed:not(.mobile-menu) a:hover {
+            color: #f97316;
+        }
+        nav.fixed:not(.mobile-menu) a.bg-orange {
+            background: var(--brand-orange);
+            color: #fff !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+        }
+        nav.fixed:not(.mobile-menu) a.bg-orange:hover {
+            background: #ea580c;
+        }
+        nav.fixed:not(.mobile-menu) a.nav-current {
+            color: var(--brand-orange);
+            font-weight: 700;
+        }
+        .nav-logo-link {
+            display: inline-block;
+        }
+        
         /* Footer - aligned with blog, responsive for web and mobile */
         .site-footer {
             border-top: 1px solid #f3f4f6;
@@ -243,13 +306,21 @@ upgrade-insecure-requests;
             align-items: center;
             gap: 0.5rem;
         }
-        
-        /* Section padding - consistent on mobile and desktop */
-        @media (max-width: 767px) {
-            #mission, #story, #competencies { padding-top: 4rem; padding-bottom: 4rem; }
-            #contact { padding-top: 3rem; padding-bottom: 3rem; }
-            .site-footer { padding-top: 2rem; padding-bottom: 2rem; }
+        /* Connect with us on LinkedIn – vertical spacing and alignment */
+        .footer-linkedin {
+            margin-top: 1.5rem;
+            line-height: 1.5;
         }
+        .footer-linkedin a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-linkedin .fa-linkedin {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
     </style>
 
 <script type="application/ld+json">
@@ -291,16 +362,15 @@ upgrade-insecure-requests;
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
         <div class="flex items-center space-x-3">
-            <img src="./assets/images/logo.png" alt="Neuorion Logo" class="h-16">
+            <a href="/" aria-label="Neuorion home" class="nav-logo-link"><img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16"></a>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-            <!-- Explicit Home Link Added -->
-            <a href="#home" class="hover:text-orange-500 transition">Home</a>
-            <a href="#mission" class="hover:text-orange-500 transition">Mission</a>
-            <a href="#story" class="hover:text-orange-500 transition">Story</a>
-            <a href="#competencies" class="hover:text-orange-500 transition">Competencies</a>
-            <a href="/blog/">Blog</a>
-            <a href="#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium items-center nav-links">
+            <a href="/" class="hover:text-orange-500 transition nav-link" data-nav="home">Home</a>
+            <a href="/#mission" class="hover:text-orange-500 transition nav-link">Mission</a>
+            <a href="/#story" class="hover:text-orange-500 transition nav-link">Story</a>
+            <a href="/#competencies" class="hover:text-orange-500 transition nav-link">Competencies</a>
+            <a href="/blog/" class="hover:text-orange-500 transition nav-link" data-nav="blog">Blog</a>
+            <a href="/#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
         </div>
         <button 
             class="mobile-menu-button" 
@@ -316,32 +386,32 @@ upgrade-insecure-requests;
     
     <!-- Mobile Menu -->
     <nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-        <a href="#home">Home</a>
-        <a href="#mission">Mission</a>
-        <a href="#story">Story</a>
-        <a href="#competencies">Competencies</a>
+        <a href="/">Home</a>
+        <a href="/#mission">Mission</a>
+        <a href="/#story">Story</a>
+        <a href="/#competencies">Competencies</a>
         <a href="/blog/">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="/#contact">Contact</a>
     </nav>
 
     <!-- Hero Section (id="home" added here) -->
-    <header id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 md:px-6 bg-gray-50 overflow-hidden">
-        <div class="relative z-10 text-center max-w-4xl">
-            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-none animate-fade-in" style="animation-delay: 0.1s;">
+    <header id="home" class="relative min-h-screen flex items-center justify-center pt-20 bg-gray-50 overflow-hidden">
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none animate-fade-in" style="animation-delay: 0.1s;">
                 BUILD. SCALE.<br><span class="logo-text-orange">SECURE.</span>
             </h1>
-            <p class="text-slate text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light animate-fade-in" style="animation-delay: 0.3s;">
+            <p class="text-slate text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light animate-fade-in" style="animation-delay: 0.3s;">
                 Your Trusted Partner for Secure, Scalable, Highly Available Cloud and AI Infrastructure.
             </p>
-            <div class="mt-8 md:mt-12 animate-slide-up" style="animation-delay: 0.5s;">
-                <a href="#mission" class="bg-orange text-white px-8 py-3 md:px-10 md:py-4 rounded-lg font-bold hover:bg-orange-600 transition shadow-lg transform hover:scale-105 inline-block">Discover Our Mission</a>
+            <div class="mt-12 animate-slide-up" style="animation-delay: 0.5s;">
+                <a href="#mission" class="bg-orange text-white px-10 py-4 rounded-lg font-bold hover:bg-orange-600 transition shadow-lg transform hover:scale-105">Discover Our Mission</a>
             </div>
         </div>
     </header>
 
 	<!-- Mission Section -->
-	<section id="mission" class="py-20 md:py-32 px-4 md:px-6 bg-white">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+	<section id="mission" class="py-32 px-6 bg-white">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <!-- Mission Image -->
         <div class="animate-slide-up">
             <img
@@ -354,11 +424,11 @@ upgrade-insecure-requests;
 
         <!-- Mission -->
         <div class="animate-fade-in">
-			<div class="text-center mb-12 md:mb-16 animate-slide-up">
-				<h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Our Mission</h2>
+			<div class="text-center mb-16 animate-slide-up">
+				<h2 class="text-4xl font-black text-gray-800 mb-4">Our Mission</h2>
 				<div class="h-1 w-20 bg-orange mx-auto"></div>
 			</div>
-			<p class="text-slate text-base md:text-lg leading-relaxed">
+			<p class="text-slate text-lg leading-relaxed">
 				Our mission is to empower organizations to build, scale, and secure intelligent cloud
 				infrastructures that accelerate innovation while maintaining trust, resilience,
 				and operational excellence in the AI era.
@@ -367,12 +437,12 @@ upgrade-insecure-requests;
 	</section>
 
     <!-- The Story Section -->
-    <section id="story" class="py-20 md:py-32 px-4 md:px-6">
-            <div class="text-center mb-12 md:mb-16 animate-slide-up">
-                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Our Story</h2>
+    <section id="story" class="py-32 px-6">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-black text-gray-800 mb-4">Our Story</h2>
                 <div class="h-1 w-20 bg-orange mx-auto"></div>
             </div>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
             <div class="animate-slide-up">
                 <p class="text-slate text-lg leading-relaxed mb-6">
                     Neuorion Technologies was founded to help organizations build and scale systems without compromising security, reliability, or governance. As workloads grew more complex, many enterprises were constrained by fragmented architectures and legacy security models - The Neuorion Technologies emerged to close that gap.
@@ -387,13 +457,13 @@ upgrade-insecure-requests;
     </section>
 
     <!-- Competencies Section -->
-    <section id="competencies" class="py-20 md:py-32 px-4 md:px-6 bg-gray-50">
+    <section id="competencies" class="py-32 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 md:mb-16 animate-slide-up">
-                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Core Competencies</h2>
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-black text-gray-800 mb-4">Core Competencies</h2>
                 <div class="h-1 w-20 bg-orange mx-auto"></div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-4 gap-6">
                 
                 <!-- Card 1: Cloud Arch-->
                 <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.1s;">
@@ -446,10 +516,10 @@ upgrade-insecure-requests;
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 px-4 md:px-6 bg-white">
+    <section id="contact" class="py-24 px-6 bg-white">
         <div class="max-w-3xl mx-auto text-center animate-slide-up">
-            <h2 class="text-2xl md:text-3xl font-black text-gray-800 mb-6">Let's Connect and Innovate.</h2>
-            <p class="text-slate mb-8 md:mb-10 text-base md:text-lg px-2">For inquiries, partnerships, and strategic consulting, connect with our professional team directly on LinkedIn.</p>
+            <h2 class="text-3xl font-black text-gray-800 mb-6">Let's Connect and Innovate.</h2>
+            <p class="text-slate mb-10 text-lg">For inquiries, partnerships, and strategic consulting, connect with our professional team directly on LinkedIn.</p>
             <a href="https://www.linkedin.com/company/neuorion"
            target="_blank"
            rel="noopener noreferrer"
@@ -460,26 +530,26 @@ upgrade-insecure-requests;
         </div>
     </section>
 
-    <!-- Footer (aligned with blog) -->
+    <!-- Footer (same structure and links as blog site) -->
     <footer class="site-footer py-12 px-6 text-center text-sm border-t border-gray-100 bg-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-slate mb-4">
                 &copy; 2025 Neuorion Technologies. All rights reserved.
             </div>
-            <div class="footer-nav flex flex-wrap justify-center gap-4 md:gap-6 text-slate">
-                <a href="#home" class="hover:text-orange-500 transition">Home</a>
-                <a href="#mission" class="hover:text-orange-500 transition">Mission</a>
-                <a href="#story" class="hover:text-orange-500 transition">Story</a>
-                <a href="#competencies" class="hover:text-orange-500 transition">Competencies</a>
+            <div class="footer-nav flex justify-center text-slate">
+                <a href="/" class="hover:text-orange-500 transition">Home</a>
+                <a href="/#mission" class="hover:text-orange-500 transition">Mission</a>
+                <a href="/#story" class="hover:text-orange-500 transition">Story</a>
+                <a href="/#competencies" class="hover:text-orange-500 transition">Competencies</a>
                 <a href="/blog/" class="hover:text-orange-500 transition">Blog</a>
-                <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
+                <a href="/#contact" class="hover:text-orange-500 transition">Contact</a>
             </div>
-            <div class="mt-6">
+            <div class="footer-linkedin">
                 <a href="https://www.linkedin.com/company/neuorion"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="inline-flex items-center gap-2 text-slate hover:text-orange-500 transition">
-                    <i class="fab fa-linkedin text-xl"></i>
+                    <i class="fab fa-linkedin text-xl" aria-hidden="true"></i>
                     <span>Connect with us on LinkedIn</span>
                 </a>
             </div>
@@ -565,6 +635,23 @@ upgrade-insecure-requests;
                 });
             });
         }
+        
+        // Logo link to site root; highlight menu item only on click
+        (function() {
+            var logoLink = document.querySelector('nav.fixed:not(.mobile-menu) .nav-logo-link');
+            if (logoLink) {
+                logoLink.setAttribute('href', window.location.origin + '/');
+            }
+            var nav = document.querySelector('nav.fixed:not(.mobile-menu) .nav-links');
+            if (nav) {
+                nav.querySelectorAll('a.nav-link').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        nav.querySelectorAll('a.nav-link').forEach(function(l) { l.classList.remove('nav-current'); });
+                        a.classList.add('nav-current');
+                    });
+                });
+            }
+        })();
     </script>
 
 </body>
