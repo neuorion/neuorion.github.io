@@ -60,6 +60,7 @@ upgrade-insecure-requests;
         .bg-orange { background-color: var(--brand-orange); }
         a { transition: color 0.2s ease; text-decoration: none; }
         a:hover { color: var(--brand-orange); }
+        .featured-post a.featured-read-link:hover { background-color: #f3f4f6 !important; color: #111827 !important; }
         
         /* Current page nav link – same highlight for Home, Blog, etc. */
         nav.fixed:not(.mobile-menu) a.nav-current {
@@ -95,7 +96,7 @@ upgrade-insecure-requests;
             nav.fixed:not(.mobile-menu) .hidden.md\:flex {
                 display: flex;
                 gap: 2rem; /* same as live neuorion.com (Tailwind space-x-8) */
-                font-size: 0.875rem;
+                font-size: 1rem;
                 font-weight: 500;
                 align-items: center;
             }
@@ -189,6 +190,7 @@ upgrade-insecure-requests;
             }
         }
         
+        /* Mobile menu – same gap/spacing as main site (index.html) */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -203,6 +205,7 @@ upgrade-insecure-requests;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            gap: 0;
         }
         
         .mobile-menu.active {
@@ -213,6 +216,8 @@ upgrade-insecure-requests;
             display: block;
             width: 100%;
             padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--text-dark);
             text-decoration: none;
             border-bottom: 1px solid #f3f4f6;
@@ -333,7 +338,7 @@ upgrade-insecure-requests;
         <div class="flex items-center space-x-3">
             <a href="{{ site.url }}{{ site.baseurl }}/" aria-label="Neuorion home" class="nav-logo-link"><img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16"></a>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium items-center nav-links">
+        <div class="hidden md:flex space-x-8 font-medium items-center nav-links">
             <a href="/" class="hover:text-orange-500 transition nav-link" data-nav="home">Home</a>
             <a href="/#mission" class="hover:text-orange-500 transition nav-link">Mission</a>
             <a href="/#story" class="hover:text-orange-500 transition nav-link">Story</a>
@@ -359,7 +364,7 @@ upgrade-insecure-requests;
         <a href="/#mission">Mission</a>
         <a href="/#story">Story</a>
         <a href="/#competencies">Competencies</a>
-        <a href="/blog/">Insights</a>
+        <a href="/blog/">Blog</a>
         <a href="/#contact">Contact</a>
     </nav>
     
@@ -417,7 +422,17 @@ upgrade-insecure-requests;
             });
         }
         
-        // Logo link always goes to site root; highlight menu item only on click
+        // Blog link: when already on blog index, avoid full reload – just scroll to top
+        (function() {
+            document.addEventListener('click', function(e) {
+                var a = e.target && e.target.closest('a[href="/blog/"]');
+                if (!a || window.location.pathname !== '/blog/') return;
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, true);
+        })();
+        
+        // Logo link always goes to site root; highlight current nav item by path and on click
         (function() {
             var logoLink = document.querySelector('nav.fixed:not(.mobile-menu) .nav-logo-link');
             if (logoLink) {
@@ -425,7 +440,22 @@ upgrade-insecure-requests;
             }
             var nav = document.querySelector('nav.fixed:not(.mobile-menu) .nav-links');
             if (nav) {
-                nav.querySelectorAll('a.nav-link').forEach(function(a) {
+                var path = window.location.pathname;
+                var links = nav.querySelectorAll('a.nav-link');
+                function setCurrentFromPath() {
+                    var path = window.location.pathname;
+                    links.forEach(function(l) {
+                        l.classList.remove('nav-current');
+                        var dataNav = l.getAttribute('data-nav');
+                        if (dataNav === 'blog' && (path === '/blog/' || path.indexOf('/blog/') === 0)) {
+                            l.classList.add('nav-current');
+                        } else if (dataNav === 'home' && (path === '/' || path === '')) {
+                            l.classList.add('nav-current');
+                        }
+                    });
+                }
+                setCurrentFromPath();
+                links.forEach(function(a) {
                     a.addEventListener('click', function() {
                         nav.querySelectorAll('a.nav-link').forEach(function(l) { l.classList.remove('nav-current'); });
                         a.classList.add('nav-current');

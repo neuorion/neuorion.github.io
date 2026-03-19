@@ -141,6 +141,7 @@ upgrade-insecure-requests;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            gap: 0;
         }
         
         .mobile-menu.active {
@@ -151,6 +152,8 @@ upgrade-insecure-requests;
             display: block;
             width: 100%;
             padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--text-dark);
             text-decoration: none;
             border-bottom: 1px solid #f3f4f6;
@@ -239,7 +242,7 @@ upgrade-insecure-requests;
             nav.fixed:not(.mobile-menu) .hidden.md\:flex {
                 display: flex;
                 gap: 2rem; /* same as live neuorion.com (Tailwind space-x-8) */
-                font-size: 0.875rem;
+                font-size: 1rem;
                 font-weight: 500;
                 align-items: center;
             }
@@ -364,7 +367,7 @@ upgrade-insecure-requests;
         <div class="flex items-center space-x-3">
             <a href="/" aria-label="Neuorion home" class="nav-logo-link"><img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16"></a>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium items-center nav-links">
+        <div class="hidden md:flex space-x-8 font-medium items-center nav-links">
             <a href="/" class="hover:text-orange-500 transition nav-link" data-nav="home">Home</a>
             <a href="/#mission" class="hover:text-orange-500 transition nav-link">Mission</a>
             <a href="/#story" class="hover:text-orange-500 transition nav-link">Story</a>
