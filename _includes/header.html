@@ -61,83 +61,72 @@ upgrade-insecure-requests;
         a { transition: color 0.2s ease; text-decoration: none; }
         a:hover { color: var(--brand-orange); }
         
-        /* Navigation Styles - aligned with main site */
-        nav {
-            position: fixed;
-            width: 100%;
-            z-index: 50;
-            background: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Desktop navigation links container */
-        nav > div.hidden,
-        nav > div[class*="hidden"] {
-            display: none;
-        }
-        
-        @media (min-width: 768px) {
-            nav > div.hidden.md\:flex,
-            nav > div[class*="md:flex"] {
-                display: flex;
-                gap: 2rem;
-                font-size: 0.875rem;
-                font-weight: 500;
-                align-items: center;
-            }
-            
-            nav .md\:px-12,
-            nav [class*="md:px-12"] {
-                padding-left: 3rem;
-                padding-right: 3rem;
-            }
-        }
-        
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        nav a:hover {
-            color: #f97316;
-        }
-        
-        /* Blog link styling */
-        nav a[href="/blog/"],
-        nav a.text-orange-600 {
+        /* Current page nav link – same highlight for Home, Blog, etc. */
+        nav.fixed:not(.mobile-menu) a.nav-current {
             color: var(--brand-orange);
             font-weight: 700;
         }
         
-        /* Contact button styling */
-        nav a[href="/#contact"],
-        nav a[href="#contact"],
-        nav a.bg-orange {
-            background: var(--brand-orange);
-            color: white !important;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.25rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        /* Site header nav – same as main site, fixed height so it doesn’t change by page */
+        nav.fixed:not(.mobile-menu) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: #fff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            padding: 1.25rem 1.5rem;
+            min-height: 4.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 1.25;
         }
-        
-        nav a[href="/#contact"]:hover,
-        nav a[href="#contact"]:hover,
-        nav a.hover\:bg-orange-600:hover {
-            background: #ea580c;
-            color: white !important;
+        @media (min-width: 768px) {
+            nav.fixed:not(.mobile-menu) {
+                padding: 1.25rem 3rem;
+            }
         }
-        
-        /* Hover effects for nav links */
-        nav a.hover\:text-orange-500:hover {
+        nav.fixed:not(.mobile-menu) .hidden {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            nav.fixed:not(.mobile-menu) .hidden.md\:flex {
+                display: flex;
+                gap: 2rem; /* same as live neuorion.com (Tailwind space-x-8) */
+                font-size: 0.875rem;
+                font-weight: 500;
+                align-items: center;
+            }
+            /* Prevent Tailwind space-x-8 from doubling spacing – only gap applies */
+            nav.fixed:not(.mobile-menu) .hidden.md\:flex > * {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+        nav.fixed:not(.mobile-menu) a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        nav.fixed:not(.mobile-menu) a:hover {
             color: #f97316;
         }
+        nav.fixed:not(.mobile-menu) a.bg-orange {
+            background: var(--brand-orange);
+            color: #fff !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+        }
+        nav.fixed:not(.mobile-menu) a.bg-orange:hover {
+            background: #ea580c;
+        }
+        .nav-logo-link {
+            display: inline-block;
+        }
         
-        /* Footer Styles */
+        /* Footer Styles - match main site */
         footer {
             text-align: center;
             padding: 3rem 1.5rem;
@@ -151,21 +140,6 @@ upgrade-insecure-requests;
             margin: 0 auto;
         }
         
-        footer .flex {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .justify-center {
-            justify-content: center;
-        }
-        
-        .space-x-6 > * + * {
-            margin-left: 1.5rem;
-        }
-        
         footer a {
             color: var(--brand-gray);
             transition: color 0.2s;
@@ -173,196 +147,6 @@ upgrade-insecure-requests;
         
         footer a:hover {
             color: var(--brand-orange);
-        }
-        
-        .inline-flex {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .text-xl {
-            font-size: 1.25rem;
-        }
-        
-        img.h-16, .h-16 {
-            height: 4rem;
-        }
-        
-        .fixed {
-            position: fixed;
-        }
-        
-        .w-full {
-            width: 100%;
-        }
-        
-        .z-50 {
-            z-index: 50;
-        }
-        
-        .shadow-md {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .items-center {
-            align-items: center;
-        }
-        
-        .space-x-3 > * + * {
-            margin-left: 0.75rem;
-        }
-        
-        .space-x-8 > * + * {
-            margin-left: 2rem;
-        }
-        
-        .text-sm {
-            font-size: 0.875rem;
-        }
-        
-        .font-medium {
-            font-weight: 500;
-        }
-        
-        .font-bold {
-            font-weight: 700;
-        }
-        
-        /* Navigation utility classes to match main site */
-        .w-full {
-            width: 100%;
-        }
-        
-        .z-50 {
-            z-index: 50;
-        }
-        
-        .shadow-md {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .items-center {
-            align-items: center;
-        }
-        
-        .justify-between {
-            justify-content: space-between;
-        }
-        
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-        
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .rounded {
-            border-radius: 0.25rem;
-        }
-        
-        .text-white {
-            color: white;
-        }
-        
-        /* Hover utilities */
-        .hover\:text-orange-500:hover {
-            color: #f97316;
-        }
-        
-        .hover\:bg-orange-600:hover {
-            background-color: #ea580c;
-        }
-        
-        .flex {
-            display: flex;
-        }
-        
-        .justify-between {
-            justify-content: space-between;
-        }
-        
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-        
-        .py-2 {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-        
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .py-12 {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-        
-        .max-w-6xl {
-            max-width: 72rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-        
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .border-t {
-            border-top-width: 1px;
-        }
-        
-        .border-gray-100 {
-            border-color: #f3f4f6;
-        }
-        
-        .gap-2 {
-            gap: 0.5rem;
-        }
-        
-        .transition {
-            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        @media (min-width: 768px) {
-            .md\:flex {
-                display: flex !important;
-            }
-            .md\:px-12 {
-                padding-left: 3rem;
-                padding-right: 3rem;
-            }
-        }
-        
-        .antialiased {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
         /* Mobile Menu Styles */
@@ -455,6 +239,53 @@ upgrade-insecure-requests;
             border: none;
         }
         
+        /* Footer - match main site exactly */
+        .site-footer {
+            border-top: 1px solid #f3f4f6;
+            background: #fff;
+        }
+        .site-footer .max-w-6xl {
+            max-width: 72rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .footer-nav { gap: 1.5rem; }
+        }
+        .footer-nav a {
+            color: var(--brand-gray);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .footer-nav a:hover {
+            color: var(--brand-orange);
+        }
+        .site-footer .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        /* Connect with us on LinkedIn – vertical spacing and alignment */
+        .footer-linkedin {
+            margin-top: 1.5rem;
+            line-height: 1.5;
+        }
+        .footer-linkedin a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-linkedin .fa-linkedin {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
         @media (min-width: 768px) {
             .mobile-menu {
                 display: none;
@@ -500,15 +331,15 @@ upgrade-insecure-requests;
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white shadow-md px-6 md:px-12 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
         <div class="flex items-center space-x-3">
-            <img src="./assets/images/logo.png" alt="Neuorion Logo" class="h-16">
+            <a href="{{ site.url }}{{ site.baseurl }}/" aria-label="Neuorion home" class="nav-logo-link"><img src="/assets/images/logo.png" alt="Neuorion Logo" class="h-16"></a>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-            <a href="#home" class="hover:text-orange-500 transition">Home</a>
-            <a href="#mission" class="hover:text-orange-500 transition">Mission</a>
-            <a href="#story" class="hover:text-orange-500 transition">Story</a>
-            <a href="#competencies" class="hover:text-orange-500 transition">Competencies</a>
-            <a href="/blog/">Blog</a>
-            <a href="#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
+        <div class="hidden md:flex space-x-8 text-sm font-medium items-center nav-links">
+            <a href="/" class="hover:text-orange-500 transition nav-link" data-nav="home">Home</a>
+            <a href="/#mission" class="hover:text-orange-500 transition nav-link">Mission</a>
+            <a href="/#story" class="hover:text-orange-500 transition nav-link">Story</a>
+            <a href="/#competencies" class="hover:text-orange-500 transition nav-link">Competencies</a>
+            <a href="/blog/" class="hover:text-orange-500 transition nav-link" data-nav="blog">Blog</a>
+            <a href="/#contact" class="bg-orange px-6 py-2 rounded text-white hover:bg-orange-600 transition shadow-md">Contact</a>
         </div>
         <button 
             class="mobile-menu-button" 
@@ -524,12 +355,12 @@ upgrade-insecure-requests;
     
     <!-- Mobile Menu -->
     <nav class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-        <a href="#home">Home</a>
-        <a href="#mission">Mission</a>
-        <a href="#story">Story</a>
-        <a href="#competencies">Competencies</a>
-        <a href="/blog/">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="/">Home</a>
+        <a href="/#mission">Mission</a>
+        <a href="/#story">Story</a>
+        <a href="/#competencies">Competencies</a>
+        <a href="/blog/">Insights</a>
+        <a href="/#contact">Contact</a>
     </nav>
     
     <script>
@@ -585,4 +416,21 @@ upgrade-insecure-requests;
                 });
             });
         }
+        
+        // Logo link always goes to site root; highlight menu item only on click
+        (function() {
+            var logoLink = document.querySelector('nav.fixed:not(.mobile-menu) .nav-logo-link');
+            if (logoLink) {
+                logoLink.setAttribute('href', window.location.origin + '/');
+            }
+            var nav = document.querySelector('nav.fixed:not(.mobile-menu) .nav-links');
+            if (nav) {
+                nav.querySelectorAll('a.nav-link').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        nav.querySelectorAll('a.nav-link').forEach(function(l) { l.classList.remove('nav-current'); });
+                        a.classList.add('nav-current');
+                    });
+                });
+            }
+        })();
     </script>
