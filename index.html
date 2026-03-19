@@ -210,6 +210,46 @@ upgrade-insecure-requests;
         body.menu-open {
             overflow: hidden;
         }
+        
+        /* Footer - aligned with blog, responsive for web and mobile */
+        .site-footer {
+            border-top: 1px solid #f3f4f6;
+            background: #fff;
+        }
+        .site-footer .max-w-6xl {
+            max-width: 72rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .footer-nav { gap: 1.5rem; }
+        }
+        .footer-nav a {
+            color: var(--brand-gray);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .footer-nav a:hover {
+            color: var(--brand-orange);
+        }
+        .site-footer .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Section padding - consistent on mobile and desktop */
+        @media (max-width: 767px) {
+            #mission, #story, #competencies { padding-top: 4rem; padding-bottom: 4rem; }
+            #contact { padding-top: 3rem; padding-bottom: 3rem; }
+            .site-footer { padding-top: 2rem; padding-bottom: 2rem; }
+        }
     </style>
 
 <script type="application/ld+json">
@@ -285,24 +325,23 @@ upgrade-insecure-requests;
     </nav>
 
     <!-- Hero Section (id="home" added here) -->
-    <header id="home" class="relative min-h-screen flex items-center justify-center pt-20 bg-gray-50 overflow-hidden">
-        <div class="relative z-10 text-center px-4 max-w-4xl">
-            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none animate-fade-in" style="animation-delay: 0.1s;">
+    <header id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 md:px-6 bg-gray-50 overflow-hidden">
+        <div class="relative z-10 text-center max-w-4xl">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-none animate-fade-in" style="animation-delay: 0.1s;">
                 BUILD. SCALE.<br><span class="logo-text-orange">SECURE.</span>
             </h1>
-            <p class="text-slate text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light animate-fade-in" style="animation-delay: 0.3s;">
+            <p class="text-slate text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light animate-fade-in" style="animation-delay: 0.3s;">
                 Your Trusted Partner for Secure, Scalable, Highly Available Cloud and AI Infrastructure.
             </p>
-            <div class="mt-12 animate-slide-up" style="animation-delay: 0.5s;">
-                <a href="#mission" class="bg-orange text-white px-10 py-4 rounded-lg font-bold hover:bg-orange-600 transition shadow-lg transform hover:scale-105">Discover Our Mission</a>
+            <div class="mt-8 md:mt-12 animate-slide-up" style="animation-delay: 0.5s;">
+                <a href="#mission" class="bg-orange text-white px-8 py-3 md:px-10 md:py-4 rounded-lg font-bold hover:bg-orange-600 transition shadow-lg transform hover:scale-105 inline-block">Discover Our Mission</a>
             </div>
         </div>
     </header>
 
 	<!-- Mission Section -->
-	<section id="mission" class="py-32 px-6 bg-white">
-
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+	<section id="mission" class="py-20 md:py-32 px-4 md:px-6 bg-white">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         <!-- Mission Image -->
         <div class="animate-slide-up">
             <img
@@ -315,11 +354,11 @@ upgrade-insecure-requests;
 
         <!-- Mission -->
         <div class="animate-fade-in">
-			<div class="text-center mb-16 animate-slide-up">
-				<h2 class="text-4xl font-black text-gray-800 mb-4">Our Mission</h2>
+			<div class="text-center mb-12 md:mb-16 animate-slide-up">
+				<h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Our Mission</h2>
 				<div class="h-1 w-20 bg-orange mx-auto"></div>
 			</div>
-			<p class="text-slate text-lg leading-relaxed">
+			<p class="text-slate text-base md:text-lg leading-relaxed">
 				Our mission is to empower organizations to build, scale, and secure intelligent cloud
 				infrastructures that accelerate innovation while maintaining trust, resilience,
 				and operational excellence in the AI era.
@@ -328,19 +367,19 @@ upgrade-insecure-requests;
 	</section>
 
     <!-- The Story Section -->
-    <section id="story" class="py-32 px-6">
-            <div class="text-center mb-16 animate-slide-up">
-                <h2 class="text-4xl font-black text-gray-800 mb-4">Our Story</h2>
+    <section id="story" class="py-20 md:py-32 px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-16 animate-slide-up">
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Our Story</h2>
                 <div class="h-1 w-20 bg-orange mx-auto"></div>
             </div>
-
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <div class="animate-slide-up">
                 <p class="text-slate text-lg leading-relaxed mb-6">
                     Neuorion Technologies was founded to help organizations build and scale systems without compromising security, reliability, or governance. As workloads grew more complex, many enterprises were constrained by fragmented architectures and legacy security models - The Neuorion Technologies emerged to close that gap.
                 </p>
            </div>
             <div class="p-8 border-l-4 border-l-orange bg-gray-50 rounded-lg shadow-sm animate-fade-in">
+                <p class="text-gray-600 italic text-xl font-light leading-relaxed">
                     "Our team brings together deep expertise in cloud architecture, AI/ML, infrastructure, and cybersecurity, helping businesses accelerate digital transformation with confidence and agility."
                 </p>
             </div>
@@ -348,14 +387,13 @@ upgrade-insecure-requests;
     </section>
 
     <!-- Competencies Section -->
-    <p class="text-gray-600 italic text-xl font-light leading-relaxed">
-    <section id="competencies" class="py-32 px-6 bg-gray-50">
+    <section id="competencies" class="py-20 md:py-32 px-4 md:px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 animate-slide-up">
-                <h2 class="text-4xl font-black text-gray-800 mb-4">Core Competencies</h2>
+            <div class="text-center mb-12 md:mb-16 animate-slide-up">
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">Core Competencies</h2>
                 <div class="h-1 w-20 bg-orange mx-auto"></div>
             </div>
-            <div class="grid md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <!-- Card 1: Cloud Arch-->
                 <div class="p-8 border border-gray-200 rounded-lg bg-white feature-card animate-scale-in" style="animation-delay: 0.1s;">
@@ -408,12 +446,11 @@ upgrade-insecure-requests;
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 bg-white">
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-6 bg-white">
         <div class="max-w-3xl mx-auto text-center animate-slide-up">
-            <h2 class="text-3xl font-black text-gray-800 mb-6">Let's Connect and Innovate.</h2>
-            <p class="text-slate mb-10 text-lg">For inquiries, partnerships, and strategic consulting, connect with our professional team directly on LinkedIn.</p>
-            
-        <a href="https://www.linkedin.com/company/neuorion"
+            <h2 class="text-2xl md:text-3xl font-black text-gray-800 mb-6">Let's Connect and Innovate.</h2>
+            <p class="text-slate mb-8 md:mb-10 text-base md:text-lg px-2">For inquiries, partnerships, and strategic consulting, connect with our professional team directly on LinkedIn.</p>
+            <a href="https://www.linkedin.com/company/neuorion"
            target="_blank"
            rel="noopener noreferrer"
            class="inline-flex items-center gap-3 bg-[#0077b5] text-white px-10 py-4 rounded-lg font-bold text-lg transition-all">
@@ -423,10 +460,29 @@ upgrade-insecure-requests;
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 text-center text-sm border-t border-gray-100">
-        <div class="text-slate">
-            &copy; 2025 Neuorion Technologies
+    <!-- Footer (aligned with blog) -->
+    <footer class="site-footer py-12 px-6 text-center text-sm border-t border-gray-100 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-slate mb-4">
+                &copy; 2025 Neuorion Technologies. All rights reserved.
+            </div>
+            <div class="footer-nav flex flex-wrap justify-center gap-4 md:gap-6 text-slate">
+                <a href="#home" class="hover:text-orange-500 transition">Home</a>
+                <a href="#mission" class="hover:text-orange-500 transition">Mission</a>
+                <a href="#story" class="hover:text-orange-500 transition">Story</a>
+                <a href="#competencies" class="hover:text-orange-500 transition">Competencies</a>
+                <a href="/blog/" class="hover:text-orange-500 transition">Blog</a>
+                <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
+            </div>
+            <div class="mt-6">
+                <a href="https://www.linkedin.com/company/neuorion"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-slate hover:text-orange-500 transition">
+                    <i class="fab fa-linkedin text-xl"></i>
+                    <span>Connect with us on LinkedIn</span>
+                </a>
+            </div>
         </div>
     </footer>
 
