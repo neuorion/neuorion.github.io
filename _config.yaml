@@ -26,6 +26,7 @@ permalink: /blog/:title.html
 # Blog files (blog/index.md, blog/_posts/*.md) HAVE front matter
 # and will be processed by Jekyll using root _layouts/ and _includes/
 exclude:
+  - vendor
   - node_modules
   - package.json
   - package-lock.json
