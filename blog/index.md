@@ -227,6 +227,9 @@ a {
 .hover\:bg-gray-100:hover { background-color: #f3f4f6; }
 .hover\:bg-orange-600:hover { background-color: #ea580c; }
 .hover\:text-orange-500:hover { color: #f97316; }
+.hover\:text-gray-900:hover { color: #111827; }
+.text-gray-900 { color: #111827; }
+.featured-post .featured-read-link:hover { background-color: #f3f4f6 !important; color: #111827 !important; }
 
 /* Additional text sizes */
 .text-2xl { font-size: 1.5rem; line-height: 2rem; }
@@ -364,7 +367,7 @@ footer .inline-flex {
 <section class="blog-hero py-20 px-6">
     <div class="max-w-6xl text-center" style="margin-left: auto; margin-right: auto;">
         <h1 class="text-6xl md:text-7xl font-black mb-6 tracking-tighter leading-none">
-            <span class="logo-text-orange">Learnings.</span> Use Cases. Ideas.
+            <span class="logo-text-orange">Case Studies.</span> Learnings. Ideas.
         </h1>
         <p class="text-slate text-xl max-w-3xl leading-relaxed font-light" style="margin: 0 auto; max-width: 42rem;">
             Real-world lessons, customer stories, and thoughts on cloud, AI security, and infrastructure.
@@ -375,14 +378,13 @@ footer .inline-flex {
 <!-- Categories Navigation -->
 <section class="py-8 px-6 bg-white border-b border-gray-200">
     <div class="max-w-6xl mx-auto">
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="/blog/" class="category-tag bg-orange text-white">All Articles</a>
-            <a href="/blog/#automation" class="category-tag">Automation</a>
-            <a href="/blog/#productivity" class="category-tag">Productivity</a>
-            <a href="/blog/#business" class="category-tag">Business Growth</a>
-            <a href="/blog/#platform" class="category-tag">Platform & Product</a>
-            <a href="/blog/#security" class="category-tag">Security</a>
-            <a href="/blog/#cloud" class="category-tag">Cloud Architecture</a>
+        <div class="flex flex-wrap justify-center gap-4" id="categoryFilters">
+            <a href="/blog/" class="category-tag bg-orange text-white" data-filter="all">All Articles</a>
+            <a href="/blog/#architecture" class="category-tag" data-filter="architecture">Architecture</a>
+            <a href="/blog/#security" class="category-tag" data-filter="security">Security</a>
+            <a href="/blog/#devops" class="category-tag" data-filter="devops">DevOps</a>
+            <a href="/blog/#company" class="category-tag" data-filter="company">Company</a>
+            <a href="/blog/#case-study" class="category-tag" data-filter="case study">Case Study</a>
         </div>
     </div>
 </section>
@@ -394,9 +396,9 @@ footer .inline-flex {
     <div class="max-w-6xl mx-auto">
         <div class="featured-post rounded-2xl p-12 shadow-xl">
             <div class="max-w-3xl">
-                <div class="mb-4">
-                    {% for category in featured_post.categories limit: 1 %}
-                    <span class="inline-block px-4 py-1 bg-white bg-opacity-20 text-white rounded-full text-sm font-medium mb-4">
+                <div class="mb-4 flex flex-wrap gap-2">
+                    {% for category in featured_post.categories %}
+                    <span class="inline-block px-4 py-1 bg-white bg-opacity-20 text-white rounded-full text-sm font-medium">
                         {{ category }}
                     </span>
                     {% endfor %}
@@ -418,7 +420,7 @@ footer .inline-flex {
                         </time>
                     </div>
                     <a href="{{ featured_post.url }}" 
-                       class="px-6 py-3 bg-white text-orange-600 font-bold rounded-lg hover:bg-gray-100 transition shadow-lg">
+                       class="featured-read-link px-6 py-3 bg-white text-gray-800 font-bold rounded-lg transition shadow-lg">
                         Read Article →
                     </a>
                 </div>
@@ -434,13 +436,14 @@ footer .inline-flex {
         <h2 class="text-4xl font-black text-gray-800 mb-12 text-center">Latest Articles</h2>
         
         {% if site.posts.size > 0 %}
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="postsGrid">
             {% for post in site.posts %}
-            <article class="post-card bg-white rounded-lg p-6" style="display: flex; flex-direction: column; height: 100%;">
+            {% assign post_cats = post.categories | join: " " %}
+            <article class="post-card bg-white rounded-lg p-6" style="display: flex; flex-direction: column; height: 100%;" data-categories="{{ post_cats }}">
                 <div style="flex: 1; display: flex; flex-direction: column;">
-                    <div class="mb-4">
+                    <div class="mb-4 flex flex-wrap gap-2">
                         {% if post.categories %}
-                            {% for category in post.categories limit: 1 %}
+                            {% for category in post.categories %}
                             <span class="category-tag">{{ category }}</span>
                             {% endfor %}
                         {% endif %}
@@ -493,3 +496,55 @@ footer .inline-flex {
         </a>
     </div>
 </section>
+
+<script>
+(function() {
+    var filtersEl = document.getElementById('categoryFilters');
+    var gridEl = document.getElementById('postsGrid');
+    if (!filtersEl || !gridEl) return;
+    var tags = filtersEl.querySelectorAll('a[data-filter]');
+    var cards = gridEl.querySelectorAll('article.post-card');
+
+    function hashToFilter() {
+        var h = (window.location.hash || '#').slice(1).replace(/-/g, ' ');
+        return h === '' ? 'all' : h;
+    }
+    function filterToHash(f) {
+        return f === 'all' ? '#' : '#' + f.replace(/ /g, '-');
+    }
+    function applyFilter(filterValue) {
+        tags.forEach(function(t) {
+            var f = t.getAttribute('data-filter');
+            if (f === filterValue) {
+                t.classList.add('bg-orange', 'text-white');
+            } else {
+                t.classList.remove('bg-orange', 'text-white');
+            }
+        });
+        cards.forEach(function(card) {
+            var cats = (card.getAttribute('data-categories') || '').toLowerCase();
+            var show = filterValue === 'all' || cats.indexOf(filterValue.toLowerCase()) !== -1;
+            card.style.display = show ? '' : 'none';
+        });
+    }
+    function setActiveFromHash() {
+        var f = hashToFilter();
+        applyFilter(f);
+    }
+    tags.forEach(function(t) {
+        t.addEventListener('click', function(e) {
+            e.preventDefault();
+            var f = t.getAttribute('data-filter');
+            var h = filterToHash(f);
+            if (h === '#') {
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            } else {
+                window.location.hash = h;
+            }
+            setActiveFromHash();
+        });
+    });
+    window.addEventListener('hashchange', setActiveFromHash);
+    setActiveFromHash();
+})();
+</script>

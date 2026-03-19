@@ -3,10 +3,10 @@
 
 {% include header.html %}
 
-<div class="pt-20 min-h-screen bg-gray-50">
+<div class="min-h-screen bg-gray-50" style="padding-top: 7rem;">
     <article class="max-w-4xl mx-auto px-6 py-16">
-        <header class="mb-12">
-            <h1 class="text-5xl font-black text-gray-800 mb-4">{{ page.title }}</h1>
+        <header class="mb-12" style="scroll-margin-top: 6rem;">
+            <h1 class="text-5xl font-black text-gray-800 mb-4" style="font-size: 3rem; font-weight: 900; color: #0F172A; margin-bottom: 1rem; line-height: 1.2;">{{ page.title }}</h1>
             {% if page.date %}
             <div class="flex items-center space-x-4 text-slate">
                 <time datetime="{{ page.date | date_to_xmlschema }}" class="text-lg">
@@ -19,9 +19,11 @@
             </div>
             {% endif %}
             {% if page.categories %}
-            <div class="mt-4 flex flex-wrap gap-2">
+            <div class="mt-4 post-categories" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                 {% for category in page.categories %}
-                <span class="px-3 py-1 bg-orange text-white text-sm rounded-full">{{ category }}</span>
+                {% if category != "blog" %}
+                <span class="post-category-pill" style="display: inline-block; padding: 0.25rem 0.75rem; background-color: #FF6B00; color: white; font-size: 0.875rem; border-radius: 9999px;">{{ category }}</span>
+                {% endif %}
                 {% endfor %}
             </div>
             {% endif %}
@@ -29,6 +31,14 @@
         
         <div class="blog-content text-slate leading-relaxed text-lg">
             <style>
+                .blog-content h1 {
+                    font-size: 3rem;
+                    font-weight: 900;
+                    color: #0F172A;
+                    margin-top: 0;
+                    margin-bottom: 1.5rem;
+                    line-height: 1.2;
+                }
                 .blog-content h2 {
                     font-size: 2rem;
                     font-weight: 900;
@@ -107,8 +117,8 @@
             {{ content }}
         </div>
         
-        <div class="mt-16 pt-8 border-t border-gray-200">
-            <div class="flex items-center justify-between">
+        <footer class="mt-16 pt-8 border-t border-gray-200">
+            <div class="flex items-center justify-between flex-wrap gap-4">
                 <a href="/blog/" class="text-orange-600 hover:text-orange-700 font-medium">
                     ← Back to Blog
                 </a>
@@ -116,7 +126,8 @@
                     Contact Us
                 </a>
             </div>
-        </div>
+            <p class="mt-4 text-sm text-gray-500 font-normal" style="text-align: center;">We use AI to refine our writing.</p>
+        </footer>
     </article>
 </div>
 
